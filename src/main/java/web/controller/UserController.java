@@ -45,13 +45,13 @@ public class UserController {
 
 
     @GetMapping("/edit/{id}")
-    public String updateUserForm(@PathVariable("id") Long id, Model model) {
+    public String updateUserForm(Model model, @PathVariable("id") Long id) {
         User user = userService.findById(id);
         model.addAttribute("user", user);
         return "edit";
     }
 
-    @PostMapping("/{id}")
+    @PatchMapping("/{id}")
     public String update(@ModelAttribute("user") @Valid User user,
                          BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -61,7 +61,13 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("delete/{id}")
+//    @GetMapping("delete/{id}")
+//    public String deleteUser(@PathVariable("id") Long id) {
+//        userService.deleteById(id);
+//        return "redirect:/";
+//    }
+
+    @DeleteMapping("delete/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         userService.deleteById(id);
         return "redirect:/";

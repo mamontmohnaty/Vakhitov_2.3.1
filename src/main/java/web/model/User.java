@@ -19,11 +19,11 @@ public class User {
     @Column(name = "id")
     private Long id;
 
-    @Size(min = 2, max = 30, message = "Name should not short or long")
+    @Size(min = 2, max = 100, message = "Name should not short or long")
     @Column(name = "name")
     private String name;
 
-    @Size(min = 2, max = 30, message = "Last Name should not short or long")
+    @Size(min = 2, max = 100, message = "Last Name should not short or long")
     @Column(name = "lastname")
     private String lastName;
 
